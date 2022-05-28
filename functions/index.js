@@ -10,8 +10,15 @@ app.use(cors());
 app.use(express.json());
 
 
+
 // set up routes
 
 app.get('/test', (req, res) => {req.send('Hi🔥🔥 This is working')})
-app.post('/goodMessages',            )
+app.get('gooMessages/:gooMessageId',         )
 app.get('/goodMessages',            )
+app.delete('/goodMessages/goodMessageId',       )
+app.patch('/gooMessages/:goodMessageId',         )
+app.post('/goodMessages',            )
+
+
+export const api = functions.https.onRequest(app)
