@@ -12,5 +12,15 @@
       "**/.*",
       "**/node_modules/**"
     ]
+  },
+  "emulators":{
+    "hosting": {
+      "host":"localhost",
+      "port": "5050"
+    }
+  },
+  "function":{
+    "source":"functions",
+    "runtime":"nodejs16"
   }
 }
