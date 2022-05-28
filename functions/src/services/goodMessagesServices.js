@@ -1,4 +1,3 @@
-//import { response } from 'express'
 import { connectDb } from '../gateway/connectDb.js'
 
 export const addGoodMessage = async (req, res) => {
