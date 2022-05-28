@@ -1,6 +1,7 @@
 import functions, { https } from 'firebase-functions'
 import express from 'express';
 import cors from 'cors';
+import { addGoodMessage, deleteGoodMessage, getAllGoodMessages, getGoodMessageById, updateGoodMessage } from './src/routes/goodMessagesRoutes';
 
 
 
@@ -14,11 +15,12 @@ app.use(express.json());
 // set up routes
 
 app.get('/test', (req, res) => {req.send('Hi🔥🔥 This is working')})
-app.get('gooMessages/:gooMessageId',         )
-app.get('/goodMessages',            )
-app.delete('/goodMessages/goodMessageId',       )
-app.patch('/gooMessages/:goodMessageId',         )
-app.post('/goodMessages',            )
+app.post('/goodMessages', addGoodMessage)
+app.get('gooMessages/:gooMessageId', getGoodMessageById)
+app.get('/goodMessages', getAllGoodMessages)
+app.delete('/goodMessages/goodMessageId', deleteGoodMessage)
+app.patch('/gooMessages/:goodMessageId', updateGoodMessage)
+
 
 
 // app.listen(3000, () => {
