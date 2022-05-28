@@ -45,12 +45,25 @@ export const getGoodMessageById = async (req, res) => {
     try { const doc = await db.collection('goodMessages').get();
         let goodMessage = doc.data();
         goodMessage.id = doc.id;
-        res.status(201).send(goodMessage)
-
-        
+        res.status(201).send(goodMessage)   
     } catch (error) {
         res.status(501).send(err)
         
+    }
+}
+
+export const updateGoodMessage = async (req, res) => {
+    if(!req.params || !req.params.restaurantId || !req.body){
+        res.status(401).send('Invalid request');
+        return;
+    }
+    const db = connectDb();
+    try {
+        const { goodMessageId } = req.params
+        db.collection('goodMessages').doc(goodMessageId).update(req.body)
+        res.status(201).send('GoodMessage updated')
+    } catch (err) {
+        res.status(501).sen(err)
     }
 }
 
