@@ -66,6 +66,20 @@ export const updateGoodMessage = async (req, res) => {
         res.status(501).sen(err)
     }
 }
+export const deleteGoodMessage = async (req , res) => {
+    const { restaurantId } = req.params;
+    if (!restaurantId) {
+        res.status(401).send('Invalid request');
+        return;
+    }
+    const db = connectDb();
+    try {
+        db.collection('goodMessages').doc(goodMessageId).delete()
+        res.status(201).send('GoodMessage deleted')
+    } catch (err) {
+        res.send(500).send(err)
+    }
+}
 
 
 
