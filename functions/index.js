@@ -1,7 +1,7 @@
 import functions from 'firebase-functions'
 import express from 'express';
 import cors from 'cors';
-import { addGoodMessage, deleteGoodMessage, getAllGoodMessages, getGoodMessageById, updateGoodMessage } from './src/services/goodMessagesServices';
+import { addGoodMessage, deleteGoodMessage, getAllGoodMessages, getGoodMessageById, updateGoodMessage } from './src/services/goodMessagesServices.js'
 
 
 

@@ -1,4 +1,4 @@
-import { connectDb } from '../gateway/connectDb.js'
+import connectDb from '../gateway/connectDb.js'
 
 export const addGoodMessage = async (req, res) => {
     if(!req.body.name || !req.body.message ) {
@@ -9,7 +9,7 @@ export const addGoodMessage = async (req, res) => {
     const db = connectDb();
     const newGoodMessage = {
         name: req.body.name,
-        message: req.body.name
+        message: req.body.message
     };
     try {
         const doc = await db.collection('goodMessages').add(newGoodMessage);

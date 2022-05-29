@@ -16,11 +16,7 @@
   "emulators":{
     "hosting": {
       "host":"localhost",
-      "port": "5050"
+      "port": "3050"
     }
-  },
-  "function":{
-    "source":"functions",
-    "runtime":"nodejs16"
   }
 }
