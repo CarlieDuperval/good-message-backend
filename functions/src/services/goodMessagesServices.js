@@ -13,7 +13,7 @@ export const addGoodMessage = async (req, res) => {
     };
     try {
         const doc = await db.collection('goodMessages').add(newGoodMessage);
-        res.status(201).send('GoodMessage Created' + doc.id);
+        res.status(201).send('GoodMessage Created'   , +  doc.id);
     } catch (err) {
         res.status(500).send(err)
     }
