@@ -1,19 +1,20 @@
 import connectDb from '../gateway/connectDb.js'
 
 export const addGoodMessage = async (req, res) => {
-    if(!req.body.name || !req.body.message ) {
-        response.status(401).send('Invalid request');
+    if(!req.body.message ) {
+        res.status(401).send('Invalid request');
         return;
     }
     // connect to firebase
     const db = connectDb();
     const newGoodMessage = {
-        name: req.body.name,
+        //name: req.body.name,
         message: req.body.message
     };
     try {
         const doc = await db.collection('goodMessages').add(newGoodMessage);
-        res.status(201).send('GoodMessage Created'   , +  doc.id);
+        // send the doc Id when message is created
+        res.status(201).send(doc.id);
     } catch (err) {
         res.status(500).send(err)
     }
@@ -52,7 +53,7 @@ export const getGoodMessageById = async (req, res) => {
 }
 
 export const updateGoodMessage = async (req, res) => {
-    if(!req.params || !req.params.restaurantId || !req.body){
+    if(!req.params || !req.params.goodMessageId || !req.body){
         res.status(401).send('Invalid request');
         return;
     }
@@ -66,8 +67,8 @@ export const updateGoodMessage = async (req, res) => {
     }
 }
 export const deleteGoodMessage = async (req , res) => {
-    const { restaurantId } = req.params;
-    if (!restaurantId) {
+    const { goodMessageId } = req.params;
+    if (!goodMessageId) {
         res.status(401).send('Invalid request');
         return;
     }
